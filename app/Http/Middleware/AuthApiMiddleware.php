@@ -15,7 +15,7 @@ class AuthApiMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        $token = $request->header('token');
+        $token = $request->header('Authorization');
         $validKey = env('ACCESS_KEY');
 
         // Validasi token

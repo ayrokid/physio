@@ -154,6 +154,32 @@
 - Ensure to include the `Content-Type: application/json` header for POST and PUT requests.
 - Replace `{uuid}` with the actual UUID of the patient in the endpoint URL.
 
+
+### Authentication
+
+All API requests must include a valid `token` in the request header for authentication. The token is validated against the `ACCESS_KEY` defined in the environment file (`.env`).
+
+#### Example Header
+```http
+Authorization: <token>
+```
+
+#### Error Responses for Authentication
+- **401 Unauthorized:** Invalid or missing token.
+  ```json
+  {
+      "message": "Unauthorized - Invalid Token Access Key"
+  }
+  ```
+
+#### Notes
+- Ensure the `ACCESS_KEY` is properly set in the `.env` file.
+- Replace `<token>` with the actual token provided for API access.
+
+
+
 ### Testing
+
 **Host:** `https://physio.klinikkoding.com`
-**token:** `1234567890987654321`
+
+**Authorization:** `1234567890987654321`
