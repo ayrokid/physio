@@ -172,14 +172,61 @@ Authorization: <token>
   }
   ```
 
-#### Notes
+### Testing with cURL
+
+You can test the API endpoints using `curl`. Below is an example of how to make a request to the API:
+
+#### Example: Update a Patient
+```bash
+curl --location --request PUT 'https://physio.klinikkoding.com/api/patient/{uuid}' \
+--header 'Authorization: 1234567890987654321' \
+--header 'Content-Type: application/json' \
+--data '{
+  "name": "John Doe update",
+  "id_type": "KTP",
+  "id_no": "1234567890",
+  "gender": "male",
+  "dob": "1990-01-15",
+  "address": "Jakarta",
+  "medium_acquisition": "Facebook Ads"
+}'
+```
+
+#### Explanation:
+- Replace `{uuid}` in the URL with the actual UUID of the patient.
+- The `Authorization` header must contain a valid token (`1234567890987654321` in this example).
+- The `Content-Type` header ensures the request body is sent as JSON.
+- The `--data` flag contains the JSON payload for the request.
+
+#### Response:
+```json
+{
+    "success": true,
+    "message": "Patient updated successfully",
+    "data": {
+        "patient": {
+            "id": 1,
+            "user_id": 1,
+            "medium_acquisition": "Facebook Ads",
+            "created_at": "2025-05-13T00:00:00.000000Z",
+            "updated_at": "2025-05-13T00:00:00.000000Z"
+        },
+        "user": {
+            "id": 1,
+            "uuid": "123e4567-e89b-12d3-a456-426614174000",
+            "name": "John Doe update",
+            "id_type": "KTP",
+            "id_no": "1234567890",
+            "gender": "male",
+            "dob": "1990-01-15",
+            "address": "Jakarta"
+        }
+    }
+}
+```
+
+### Notes
 - Ensure the `ACCESS_KEY` is properly set in the `.env` file.
-- Replace `<token>` with the actual token provided for API access.
-
-
-
-### Testing
-
-**Host:** `https://physio.klinikkoding.com`
-
-**Authorization:** `1234567890987654321`
+- Replace `{uuid}` and `<token>` with the actual values for your API.
+- Host: `https://physio.klinikkoding.com`
+- Authorization: `1234567890987654321`
