@@ -153,3 +153,7 @@
 ### Notes
 - Ensure to include the `Content-Type: application/json` header for POST and PUT requests.
 - Replace `{uuid}` with the actual UUID of the patient in the endpoint URL.
+
+### Testing
+**Host:** `https://physio.klinikkoding.com`
+**token:** `1234567890987654321`
