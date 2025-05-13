@@ -24,12 +24,12 @@ class AuthApiMiddleware
         }
 
         // Validasi Whitelist IP
-        $allowedIps = explode(',', env('WHITELIST_IPS', '127.0.0.1')); // default ke localhost
-        $clientIp = $request->ip();
+        // $allowedIps = explode(',', env('WHITELIST_IPS', '127.0.0.1')); // default ke localhost
+        // $clientIp = $request->ip();
 
-        if (!in_array($clientIp, $allowedIps)) {
-            return response()->json(['message' => 'Unauthorized - IP not allowed'], 403);
-        }
+        // if (!in_array($clientIp, $allowedIps)) {
+        //     return response()->json(['message' => 'Unauthorized - IP not allowed'], 403);
+        // }
 
         return $next($request);
     }
